@@ -1,1 +1,59 @@
-name:Terraform CI
+name: Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: 'us-east-1'
+      TF_VERSION: '1.11.4'
+
+
+    steps:
+    - name: 'Checkout GitHub repository'
+      uses: actions/checkout@v2
+
+    - name: 'Configure AWS credentials'
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: 'Set up Terraform'
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+
+    - name: 'Terraform Format'
+      run: terraform fmt
+
+    - name: 'Terraform Validate'
+      run: terraform validate
+
+    - name: 'Terraform Init for dev'
+      run: terraform init -reconfigure -backend-config=../env/dev/backend.hcl
+
+    - name: 'Terraform Plan for dev'
+      run: terraform plan -var-file=../env/dev/terraform.tfvars
+
+    - name: 'Terraform Apply for dev'
+      run: terraform Apply -var-file=../env/dev/terraform.tfvars
+
+    - name: 'Terraform destroy for dev'
+      run: terraform destroy -var-file=../env/dev/terraform.tfvars
+
+    
+
+    
+
