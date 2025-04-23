@@ -52,7 +52,7 @@ jobs:
       run: terraform plan -var-file=../env/dev/terraform.tfvars
 
     - name: 'Terraform Apply for dev'
-      run: terraform Apply -var-file=../env/dev/terraform.tfvars
+      run: terraform apply -var-file=../env/dev/terraform.tfvars
 
     - name: 'Terraform destroy for dev'
       run: terraform destroy -var-file=../env/dev/terraform.tfvars
