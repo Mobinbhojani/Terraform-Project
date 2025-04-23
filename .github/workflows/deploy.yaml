@@ -38,9 +38,6 @@ jobs:
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
-    - name: "changing direcoty"
-      run: cd resources    
-
     - name: 'Terraform Format'
       run: terraform fmt
   
