@@ -1,4 +1,4 @@
     bucket = "my-teeraform-prod-project"
     region = "ap-south-1"
-    key = "terraform.tf"
+    key = "dev/terraform.tf"
     dynamodb_table = "my-teeraform-dev-project"
