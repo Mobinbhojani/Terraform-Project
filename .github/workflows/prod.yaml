@@ -1,4 +1,4 @@
-name: Terraform CI/CD for dev
+name: Terraform CI/CD for prod
 
 on:
   push:
@@ -42,22 +42,17 @@ jobs:
       run: terraform fmt
   
     - name: 'Terraform Init for dev'
-      run: terraform init -input=false -backend-config=../env/dev/backend.hcl
+      run: terraform init -input=false -backend-config=../env/prod/backend.hcl
     
 
     - name: 'Terraform Validate'
       run: terraform validate
 
     - name: 'Terraform Plan for dev'
-      run: terraform plan -var-file=../env/dev/terraform.tfvars
+      run: terraform plan -var-file=../env/prod/terraform.tfvars
 
     - name: 'Terraform Apply for dev'
-      run: terraform apply --auto-approve -var-file=../env/dev/terraform.tfvars
+      run: terraform apply --auto-approve -var-file=../env/prod/terraform.tfvars
 
     - name: 'Terraform destroy for dev'
-      run: terraform destroy --auto-approve -var-file=../env/dev/terraform.tfvars
-
-    
-
-    
-
+      run: terraform destroy --auto-approve -var-file=../env/prod/terraform.tfvars
