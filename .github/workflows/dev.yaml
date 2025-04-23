@@ -6,7 +6,7 @@ on:
 jobs: 
   dev-deploy-reusable:
  
-     uses: ./.github/workflows/terraform_deployments.yaml
+     uses: ./.github/workflows/terraform_deployment.yaml
      with:
           environment: dev
 
