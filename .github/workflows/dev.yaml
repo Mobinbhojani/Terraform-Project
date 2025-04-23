@@ -4,7 +4,7 @@ on:
     workflow_dispatch
 
 jobs: 
-  dev-deploy-reusable:
+  deploy-dev-reusable:
  
      uses: ./.github/workflows/terraform_deployments.yaml
      with:
@@ -16,3 +16,4 @@ jobs:
 
 
     
+        
