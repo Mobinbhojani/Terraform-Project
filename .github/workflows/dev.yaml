@@ -11,7 +11,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Deploy'
+    name: 'Deploy dev'
     runs-on: ubuntu-latest
 
     defaults:

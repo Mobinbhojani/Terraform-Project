@@ -16,7 +16,7 @@ on:
 jobs:
   terraform:  
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    name: 'Deploy'
+    name: 'Deploy prod'
     runs-on: ubuntu-latest
 
     defaults:
