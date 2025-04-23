@@ -3,12 +3,12 @@ name: Terraform CI/CD
 on:
   workflow_call:
     
-    inputs:
+    inputs:  #parameter  1  to pass the inpuut to the reuseable workflow use--> with: name of the input and its value
       environment:
         required: true
         type: string
 
-    secrets:
+    secrets:  #parameter 2
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
@@ -16,7 +16,7 @@ on:
       
 jobs:
   terraform:
-    name: 'Deploy dev'
+    name: 'Deploy ${{ inputs.environment }}'
     runs-on: ubuntu-latest
 
     defaults:
