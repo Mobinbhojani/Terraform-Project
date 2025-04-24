@@ -15,7 +15,7 @@ on:
         required: true
       
 jobs:
-  terraform:
+  terraform:    #JOB NANE
     name: 'Deploy ${{ inputs.environment }}'
     runs-on: ubuntu-latest
 
