@@ -1,8 +1,36 @@
 stages:
-  - setup-deploy  
+  - dev
+  - prod
 
-install-tools-and-deploy:
-  stage: setup-deploy
+install-tools-and-deploy-dev:
+  stage: dev
+
+  before_script:
+      - echo installing aws cli 
+      - apt-get update
+      - apt-get install zip
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      - ./aws/install
+      - aws --version
+      - wget -O - https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com jammy main" | tee /etc/apt/sources.list.d/hashicorp.list
+      - apt update && apt install terraform
+      - terraform --version
+  script: 
+      - echo "tools installed" 
+      - cd resources
+      - terraform init -input=false -backend-config=../env/dev/backend.hcl
+      - terraform fmt
+      - terraform validate
+      - terraform plan -var-file=../env/dev/terraform.tfvars
+      - terraform apply --auto-approve -var-file=../env/dev/terraform.tfvars
+      - terraform destroy --auto-approve -var-file=../env/dev/terrafrom.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+
+install-tools-and-deploy-prod:
+  stage: prod
 
   before_script:
       - echo installing aws cli 
@@ -25,6 +53,8 @@ install-tools-and-deploy:
       - terraform plan -var-file=../env/prod/terraform.tfvars
       - terraform apply --auto-approve -var-file=../env/prod/terraform.tfvars
       - terraform destroy --auto-approve -var-file=../env/prod/terrafrom.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "prod"'
 
 
 
