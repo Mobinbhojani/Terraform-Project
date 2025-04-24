@@ -23,7 +23,7 @@ install-tools-and-deploy:
       - terraform fmt
       - terraform validate
       - terraform plan -var-file=../env/dev/terraform.tfvars
-      - terraform apply -var-file=../env/dev/terraform.tfvars
+      - terraform apply --auto-approve -var-file=../env/dev/terraform.tfvars
 
 
 
