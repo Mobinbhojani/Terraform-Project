@@ -24,7 +24,7 @@ install-tools-and-deploy:
       - terraform validate
       - terraform plan -var-file=../env/dev/terraform.tfvars
       - terraform apply --auto-approve -var-file=../env/dev/terraform.tfvars
-
+      - terraform destroy --auto-approve -var-file=../env/dev/terrafrom.tfvars
 
 
 
