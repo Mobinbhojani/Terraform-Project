@@ -19,7 +19,7 @@ install-tools-and-deploy:
   script: 
       - echo "tools installed" 
       - cd resources
-      - terraform init input=false -backend-config=../env/prod/backend.hcl
+      - terraform init -input=false -backend-config=../env/prod/backend.hcl
 
 
 
