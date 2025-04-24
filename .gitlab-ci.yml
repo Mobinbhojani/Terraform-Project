@@ -19,7 +19,11 @@ install-tools-and-deploy:
   script: 
       - echo "tools installed" 
       - cd resources
-      - terraform init -input=false -backend-config=../env/prod/backend.hcl
+      - terraform init -input=false -backend-config=../env/dev/backend.hcl
+      - terraform fmt
+      - terraform validate
+      - terraform plan -var-file=../env/dev/terraform.tfvars
+      - terraform apply -var-file=../env/dev/terraform.tfvars
 
 
 
