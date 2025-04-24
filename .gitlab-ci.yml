@@ -2,8 +2,8 @@ stages:
   - setup
   - deploy  
 
-install-tools:
-  stage: setup
+install-tools-and-deploy:
+  stage: setup-deploy
 
   before_script:
       - echo installing aws cli 
@@ -18,13 +18,7 @@ install-tools:
       - apt update && apt install terraform
       - terraform --version
   script: 
-      - echo "tools installed"
-
-deploy-dev:
-  stage: deploy
-
-  script: 
-
+      - echo "tools installed" 
       - cd resources
       - terraform init input=false -backend-config=../env/prod/backend.hcl
 
