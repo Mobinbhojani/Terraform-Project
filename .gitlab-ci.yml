@@ -54,7 +54,7 @@ install-tools-and-deploy-prod:
       - terraform apply --auto-approve -var-file=../env/prod/terraform.tfvars
       - terraform destroy --auto-approve -var-file=../env/prod/terrafrom.tfvars
   rules:
-    - if: '$CI_COMMIT_BRANCH == "prod"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
 
 
