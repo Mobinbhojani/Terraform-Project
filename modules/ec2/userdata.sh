@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install apache2 -y
 
 # Create a simple HTML file
-echo "Welcome to iq infinite pvt ltd." > /var/www/html/index.html
+echo "Welcome to iq infinite pvt ltd....." > /var/www/html/index.html
 
 # Start Apache2 service
 sudo systemctl start apache2
