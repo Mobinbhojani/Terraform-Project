@@ -25,7 +25,7 @@ install-tools-and-deploy-dev:
       - terraform validate
       - terraform plan -var-file=../env/dev/terraform.tfvars
       - terraform apply --auto-approve -var-file=../env/dev/terraform.tfvars
-      - terraform destroy --auto-approve -var-file=../env/dev/terrafrom.tfvars
+      - terraform destroy --auto-approve -var-file=../env/dev/terraform.tfvars
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
@@ -52,7 +52,7 @@ install-tools-and-deploy-prod:
       - terraform validate
       - terraform plan -var-file=../env/prod/terraform.tfvars
       - terraform apply --auto-approve -var-file=../env/prod/terraform.tfvars
-      - terraform destroy --auto-approve -var-file=../env/prod/terrafrom.tfvars
+      - terraform destroy --auto-approve -var-file=../env/prod/terraform.tfvars
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
 
