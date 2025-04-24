@@ -1,8 +1,9 @@
 stages:
+  - setup
   - deploy  
 
 install-tools:
-  stage: deploy
+  stage: setup
 
   before_script:
       - echo installing aws cli 
@@ -16,8 +17,18 @@ install-tools:
       - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com jammy main" | tee /etc/apt/sources.list.d/hashicorp.list
       - apt update && apt install terraform
       - terraform --version
+      - apt-get install git
   script: 
       - echo "tools installed"
+
+# deploy-dev:
+#   stage: deploy
+
+#   script: 
+
+#       -  
+
+
 
 
 
