@@ -1,6 +1,5 @@
 stages:
-  - setup
-  - deploy  
+  - setup-deploy  
 
 install-tools-and-deploy:
   stage: setup-deploy
