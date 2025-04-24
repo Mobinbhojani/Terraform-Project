@@ -21,12 +21,13 @@ install-tools:
   script: 
       - echo "tools installed"
 
-# deploy-dev:
-#   stage: deploy
+deploy-dev:
+  stage: deploy
 
-#   script: 
+  script: 
 
-#       -  
+      - cd resources
+      - terraform init input=false -backend-config=../env/prod/backend.hcl
 
 
 
