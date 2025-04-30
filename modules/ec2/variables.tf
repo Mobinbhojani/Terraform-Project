@@ -34,9 +34,9 @@ variable "ami-id" {
 
 # }
 
-variable "instance-name" {
+# variable "instance-name" {
 
-}
+# }
 
 variable "key-name" {
 
