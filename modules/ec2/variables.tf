@@ -77,6 +77,6 @@ variable "environment" {
     
 }
 
-# variable "tags" {
+variable "tags" {
   
-# }
+}
