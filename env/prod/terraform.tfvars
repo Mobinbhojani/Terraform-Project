@@ -16,3 +16,4 @@ port_numbers_egress   = [0]
 # subnet_id             = module.vpc.public_subnet_id
 # security_group_ids  = [module.security_group.sg_id]
 environment = "prod" 
+project_name = "terraform-project"

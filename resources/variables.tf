@@ -76,3 +76,7 @@ variable "port_numbers_egress" {
 variable "environment" {
   
 }
+
+variable "project_name" {
+  
+}
